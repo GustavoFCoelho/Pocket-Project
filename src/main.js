@@ -220,7 +220,7 @@ function interact() {
 }
 
 window.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && battle.isActive()) { battle.start(); return; }
+  if (event.key === 'Escape' && battle.isActive()) { document.querySelector('.battle-close')?.click(); return; }
   if (event.key === 'e' || event.key === 'E' || event.key === 'Enter') interact();
 });
 
