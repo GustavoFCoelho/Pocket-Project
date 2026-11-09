@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "threejs-scene": {
+      "source": "Moh4696/open-3d-skills",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-scene/SKILL.md",
+      "computedHash": "f2c88c2982f9bde3958c1d12d860604dff3c49ff4da56fedc8687e60aaf8654a"
+    }
+  }
+}

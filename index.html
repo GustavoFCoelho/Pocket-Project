@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#17221f" />
+    <title>Pocket — protótipo 2.5D</title>
+  </head>
+  <body>
+    <main id="game" aria-label="Protótipo de RPG 2.5D">
+      <div class="hud hud-top">
+        <div class="brand"><span class="brand-mark">P</span><div><strong>POCKET</strong><small>JORNADA DEMO</small></div></div>
+        <div class="location"><span class="location-dot"></span> ROTA VERDE <span class="location-divider">/</span> MANHÃ</div>
+        <button class="icon-button" id="sound-toggle" aria-label="Alternar som">♪</button>
+      </div>
+
+      <section class="scene-label" aria-live="polite">
+        <span class="scene-eyebrow">REGIÃO DE AURORA</span>
+        <h1>Trilha das<br /><em>Folhas Altas</em></h1>
+        <p>Um novo caminho começa aqui.</p>
+      </section>
+
+      <div class="hud hud-bottom">
+        <div class="objective"><span class="objective-icon">✦</span><div><small>OBJETIVO</small><strong>Explore a trilha</strong></div></div>
+        <div class="controls"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>ou setas para caminhar</span></div>
+        <button class="bag-button" id="bag-button"><span>▣</span> MOCHILA <b>1</b></button>
+      </div>
+      <div class="toast" id="toast" role="status"></div>
+      <div class="touch-controls" aria-label="Controles de toque">
+        <div class="dpad">
+          <button type="button" data-move="w" aria-label="Mover para cima">▲</button>
+          <button type="button" data-move="a" aria-label="Mover para esquerda">◀</button>
+          <button type="button" data-move="s" aria-label="Mover para baixo">▼</button>
+          <button type="button" data-move="d" aria-label="Mover para direita">▶</button>
+        </div>
+        <button type="button" id="interact-button" aria-label="Conversar ou interagir">A</button>
+      </div>
+      <div id="canvas-wrap"></div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
