@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import './style.css';
+import { createBattleSystem } from './battle.js';
 
 const wrap = document.querySelector('#canvas-wrap');
 const scene = new THREE.Scene();
@@ -185,12 +186,15 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove('visible'), 1900);
 }
 
+const battle = createBattleSystem({ showToast });
+
 function walkable(x, z) {
   if (x < worldBounds.minX || x > worldBounds.maxX || z < worldBounds.minZ || z > worldBounds.maxZ) return false;
   return !blocked.some(([bx, bz]) => Math.hypot(bx - x, bz - z) < 0.52);
 }
 
 function movePlayer(dt) {
+  if (battle.isActive()) { moving = false; return; }
   const xAxis = (keys.has('ArrowRight') || keys.has('d') ? 1 : 0) - (keys.has('ArrowLeft') || keys.has('a') ? 1 : 0);
   const zAxis = (keys.has('ArrowDown') || keys.has('s') ? 1 : 0) - (keys.has('ArrowUp') || keys.has('w') ? 1 : 0);
   moving = xAxis !== 0 || zAxis !== 0;
@@ -207,14 +211,16 @@ function movePlayer(dt) {
 }
 
 function interact() {
+  if (battle.isActive()) return;
   const nearGuide = Math.hypot(guide.position.x - player.position.x, guide.position.z - player.position.z) < 1.35;
   const nearCreature = Math.hypot(mossbit.position.x - player.position.x, mossbit.position.z - player.position.z) < 1.35;
   if (nearGuide) showToast('Mira: A trilha guarda criaturas gentis. Vamos explorar?');
-  else if (nearCreature) showToast('Mossbit está curioso. Um encontro pode acontecer em breve!');
+  else if (nearCreature) battle.start();
   else showToast('Não há ninguém por perto para conversar.');
 }
 
 window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && battle.isActive()) { battle.start(); return; }
   if (event.key === 'e' || event.key === 'E' || event.key === 'Enter') interact();
 });
 
