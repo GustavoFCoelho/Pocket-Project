@@ -36,7 +36,7 @@
         "outputEdgeTouchFrames": "pass",
         "sourceEdgeTouchFrames": "pass"
       },
-      "outputSha256": "ebaa53cfc192f9cdc3fe28e56f485fa6acc0f9d414234889b38abfd8f3b526c9"
+      "outputSha256": "7397cc570bc07fa30b52cd900d9f2eec9b050bb9929959f1b4eaab8beea6d7ed"
     },
     "cindercub": {
       "source": "Generated Cindercub master still",
@@ -52,7 +52,7 @@
         "outputEdgeTouchFrames": "pass",
         "sourceEdgeTouchFrames": "pass"
       },
-      "outputSha256": "ce6c6cec831d6ac75d4c348a7729c06cbbe98b563b8ae7185a20b5a9c5671ff9"
+      "outputSha256": "e4ba41a2d3ec63ce719ede426dfe70b0dfe7726b1dbe12026d64bafd16db8122"
     }
   },
   "limits": [
