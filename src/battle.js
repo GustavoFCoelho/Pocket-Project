@@ -1,4 +1,6 @@
 import './battle.css';
+import mossbitArt from './assets/mossbit-battle.b64?raw';
+import cindercubArt from './assets/cindercub.b64?raw';
 
 const creatures = {
   mossbit: {
@@ -27,24 +29,9 @@ const creatures = {
   },
 };
 
-const cindercubSvg = `<svg class="cindercub-art" viewBox="0 0 32 32" role="img" aria-label="Cindercub, criatura de brasa">
-  <g shape-rendering="crispEdges">
-    <path fill="#6a342d" d="M7 7h4V3h4v5h-4v4H7zm14 1h4V4h4v7h-4v3h-4z"/>
-    <path fill="#d76547" d="M8 12h4V8h4v3h5V8h4v5h3v9h-3v5h-5v2h-7v-2h-5v-4H6v-9h2z"/>
-    <path fill="#f49a5f" d="M11 13h4v3h-4zm10 0h4v3h-4zM12 19h10v4h-3v2h-5v-2h-2z"/>
-    <path fill="#fff1c9" d="M13 13h2v2h-2zm10 0h2v2h-2z"/>
-    <path fill="#382a2b" d="M14 14h1v2h-1zm10 0h1v2h-1zM17 20h4v1h-4z"/>
-    <path fill="#f4c56f" d="M5 16h2v4H5zm20-7h3V6h2v7h-5zM10 25h4v3h-4zm11 0h4v3h-4z"/>
-    <path fill="#fff1c9" d="M15 26h5v2h-5z"/>
-  </g>
-</svg>`;
-
-function renderSprite(creature, isPlayer) {
-  if (creature.key === 'mossbit') {
-    const url = `${import.meta.env.BASE_URL}sprites/mossbit.png`;
-    return `<img class="creature-art mossbit-art" src="${url}" alt="Mossbit">`;
-  }
-  return cindercubSvg;
+function renderSprite(creature) {
+  const image = creature.key === 'mossbit' ? mossbitArt.trim() : cindercubArt.trim();
+  return `<img class="creature-art ${creature.key}-art" src="data:image/png;base64,${image}" alt="${creature.name}">`;
 }
 
 export function createBattleSystem({ showToast }) {
@@ -86,14 +73,14 @@ export function createBattleSystem({ showToast }) {
         <div class="battle-creature enemy-side" id="enemy-creature">
           <div class="creature-aura aura-enemy"></div>
           <div class="creature-shadow"></div>
-          ${renderSprite(enemy, false)}
+          ${renderSprite(enemy)}
           <span class="creature-level">Nv. 3</span>
         </div>
         ${healthMarkup('enemy-hp', enemy.name, enemy.type, enemyHp, enemy.maxHp, true)}
         <div class="battle-creature player-side" id="player-creature">
           <div class="creature-aura aura-player"></div>
           <div class="creature-shadow"></div>
-          ${renderSprite(player, true)}
+          ${renderSprite(player)}
           <span class="creature-level">Nv. 3</span>
         </div>
         ${healthMarkup('player-hp', player.name, player.type, playerHp[playerIndex], player.maxHp)}
@@ -135,9 +122,10 @@ export function createBattleSystem({ showToast }) {
     field.className = 'battle-effects';
     void el.offsetWidth;
     el.classList.add(kind === 'hit' ? 'is-hit' : 'is-attacking');
+    if (kind !== 'hit') el.classList.add(`attack-${kind}`);
     field.classList.add(`effect-${kind}`, `effect-on-${target}`);
     window.setTimeout(() => {
-      el.classList.remove('is-attacking', 'is-hit');
+      el.classList.remove('is-attacking', 'is-hit', 'attack-leaf', 'attack-ember', 'attack-tackle');
       field.className = 'battle-effects';
     }, 700);
   }
