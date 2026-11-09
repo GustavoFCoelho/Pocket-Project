@@ -1,0 +1,62 @@
+{
+  "schema": "pocket.creature-sprite-assets.v1",
+  "pipeline": {
+    "skill": "generate2dsprite",
+    "masterStillToolVersion": "0.5.0",
+    "processorToolVersion": "0.5.0",
+    "artRoute": "host-image_gen",
+    "finish": "pixel",
+    "processor": {
+      "command": "generate2dsprite.py process",
+      "target": "creature",
+      "mode": "single",
+      "backgroundMode": "native_alpha",
+      "outputSize": [
+        96,
+        96
+      ],
+      "resampler": "lanczos",
+      "align": "feet",
+      "anchorMode": "feet",
+      "strictQc": true
+    }
+  },
+  "creatures": {
+    "mossbit": {
+      "source": "Generated Mossbit master still",
+      "runtimeAsset": "./mossbit-battle.b64",
+      "masterStill": "generate2dsprite.master.v1",
+      "facing": "right",
+      "class": "mob",
+      "frameCount": 1,
+      "qc": "pass",
+      "checks": {
+        "emptyFrames": "pass",
+        "pasteClampedFrames": "pass",
+        "outputEdgeTouchFrames": "pass",
+        "sourceEdgeTouchFrames": "pass"
+      },
+      "outputSha256": "ebaa53cfc192f9cdc3fe28e56f485fa6acc0f9d414234889b38abfd8f3b526c9"
+    },
+    "cindercub": {
+      "source": "Generated Cindercub master still",
+      "runtimeAsset": "./cindercub.b64",
+      "masterStill": "generate2dsprite.master.v1",
+      "facing": "left",
+      "class": "mob",
+      "frameCount": 1,
+      "qc": "pass",
+      "checks": {
+        "emptyFrames": "pass",
+        "pasteClampedFrames": "pass",
+        "outputEdgeTouchFrames": "pass",
+        "sourceEdgeTouchFrames": "pass"
+      },
+      "outputSha256": "ce6c6cec831d6ac75d4c348a7729c06cbbe98b563b8ae7185a20b5a9c5671ff9"
+    }
+  },
+  "limits": [
+    "QC measures framing, alpha geometry and edge contact; it does not certify anatomy, identity or facing.",
+    "These are static 96x96 runtime sprites; battle motion is currently supplied by CSS animation."
+  ]
+}
