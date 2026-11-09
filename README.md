@@ -9,9 +9,9 @@ Protótipo de RPG de navegador em perspectiva 2.5D, com exploração de mapa em 
 - Personagem principal, guia e criatura originais em sprites com acabamento pixel art.
 - Movimento por WASD/setas e controles de toque; interações com E/Enter ou botão A.
 - Câmera acompanha o personagem e a interface se adapta a telas menores.
-- Nenhum material ou personagem de Pokémon foi incluído.
+- Nenhum material ou personagem de Pokémon foi incluído.\n- Sistema de batalha por turnos: aproxime-se de Mossbit e pressione E/Enter ou o botão A.\n- Duas criaturas jogáveis no grupo: Mossbit (Bosque) e Cindercub (Brasa), com troca, PV, ataques e dano.\n- Animações próprias de idle, investida e dano, além de efeitos visuais diferentes para folhas, brasa e impacto.\n- Artes originais das criaturas em pixel art, carregadas no módulo de batalha.
 
-## Skills do projeto
+## Batalhas\n\nA batalha começa ao interagir com Mossbit na trilha. Escolha Mossbit ou Cindercub, use um dos dois ataques da criatura ativa e troque de parceiro quando precisar. O oponente selvagem é sorteado entre as duas espécies. A batalha pode ser encerrada pelo botão × ou pela tecla Escape.\n\n## Skills do projeto
 
 As skills ficam em `.agents/skills/` e orientam a criação de cenas Three.js, sprites 2D, mapas 2D e mídia para jogos. `video2dsprite` também está instalado para uma etapa futura de animação; o fluxo de vídeo não está disponível nesta sessão. Os três sprites atuais foram gerados com o recurso de imagem do ChatGPT e finalizados localmente com redução de resolução e paleta.
 
